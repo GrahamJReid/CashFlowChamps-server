@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from cashflowchampsapi.views import register_user, check_user, UserView
+from cashflowchampsapi.views import register_user, check_user, UserView, BudgetView
 
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', UserView, 'user')
+router.register(r'budgets', BudgetView, 'budget')
 
 
 
