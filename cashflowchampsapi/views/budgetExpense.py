@@ -51,6 +51,9 @@ class BudgetExpenseView(ViewSet):
         
         budgetexpense.save()
 
+    def destroy(self, request, pk):
+        budgetexpense = BudgetExpense.objects.get(pk=pk)
+        budgetexpense.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
       
 class BudgetExpenseSerializer(serializers.ModelSerializer):
