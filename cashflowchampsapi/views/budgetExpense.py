@@ -33,11 +33,11 @@ class BudgetExpenseView(ViewSet):
     def create(self, request):
  
        
-        expenseId = Expense.objects.get(pk=request.data["expense_id"])
-        budgetId = Budget.objects.get(pk=request.data["budget_id"])
+        expenseId = Expense.objects.get(pk=request.data["expenseId"])
+        budgetId = Budget.objects.get(pk=request.data["budgetId"])
 
         budgetexpense = BudgetExpense.objects.create(
-            expenseId = expenseId,
+            expense_id = expenseId,
             budget_id =budgetId
         )
         serializer = BudgetExpenseSerializer(budgetexpense)
@@ -46,8 +46,8 @@ class BudgetExpenseView(ViewSet):
     def update(self, request, pk):
       
         budgetexpense = BudgetExpense.objects.get(pk=pk)
-        budgetexpense.budget_id= Budget.objects.get(pk=request.data["budget_id"])
-        budgetexpense.expense_id = Expense.objects.get(pk=request.data["expense_id"])
+        budgetexpense.budget_id= Budget.objects.get(pk=request.data["budgetId"])
+        budgetexpense.expense_id = Expense.objects.get(pk=request.data["expenseId"])
         
         budgetexpense.save()
 
