@@ -62,5 +62,6 @@ class BudgetExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = BudgetExpense
         fields = ('id', 'budget_id', 'expense_id')
+        depth = 1
 
     
